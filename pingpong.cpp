@@ -65,7 +65,7 @@ void Menu()
                 break;
         }
 
-        // Wait for user to press a key before clearing the console screen
+        // Wait for user to press a key before continuing
         cout << endl << "Press any key to continue...";
         _getch();
     }
@@ -73,7 +73,11 @@ void Menu()
 
 void Draw()
 {
-    system("cls"); // Clear the console screen
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    COORD cursorPos;
+    cursorPos.X = 0;
+    cursorPos.Y = 0;
+    SetConsoleCursorPosition(hConsole, cursorPos);
 
     for (int i = 0; i < WIDTH + 2; i++)
         cout << "#";
